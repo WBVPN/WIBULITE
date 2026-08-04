@@ -1,0 +1,110 @@
+#!/bin/bash
+PERMISSION() {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+
+    TODAY_DATE=$(date +'%Y-%m-%d')
+
+    AUTHORIZED_ENTRY=$(curl -sS https://raw.githubusercontent.com/WBVPN/WIBUVPN-LITE/main/ip?v=$RANDOM | grep -w "$MYIP" | head -1)
+
+    if [[ -n "$AUTHORIZED_ENTRY" ]]; then
+        # IP_FROM_ENTRY sekarang adalah field ke-4
+        IP_FROM_ENTRY=$(echo "$AUTHORIZED_ENTRY" | awk '{print $4}')
+        # EXP_DATE_OR_LIFETIME_STATUS sekarang adalah field ke-3
+        EXP_DATE_OR_LIFETIME_STATUS=$(echo "$AUTHORIZED_ENTRY" | awk '{print $3}') 
+
+        if [ "$MYIP" = "$IP_FROM_ENTRY" ]; then
+            # Cek apakah statusnya 'lifetime'
+            if [[ "$EXP_DATE_OR_LIFETIME_STATUS" == "lifetime" ]]; then
+                echo -e "\033[1;92mPermission Accepted (Lifetime User)\033[0m"
+                echo -e "\033[1;97mAkses Di Izinkan (Pengguna Lifetime)${NC}"
+            # Jika bukan 'lifetime', baru lakukan perbandingan tanggal
+            elif [[ "$TODAY_DATE" < "$EXP_DATE_OR_LIFETIME_STATUS" ]]; then
+                echo -e "\033[1;92mPermission Accepted\033[0m"
+                echo -e "\033[1;97mAkses Di Izinkan${NC}"
+            elif [[ "$TODAY_DATE" == "$EXP_DATE_OR_LIFETIME_STATUS" ]]; then
+                echo -e "\033[1;93mPermission Accepted (Today is Expiry Date)\033[0m"
+                echo -e "\033[1;97mAkses Di Izinkan (Hari Ini Kadaluarsa)${NC}"
+            else
+                echo -e "\033[1;91mPermission Denied (Expired)\033[0m"
+                echo -e "\033[1;97mAkses Di Tolak (Kadaluarsa)${NC}"
+                read -n 1 -s -r -p "Press [ Enter ] to Exit"
+                exit 1
+            fi
+        else
+            echo -e "\033[1;91mPermission Denied (IP Mismatch)\033[0m"
+            echo -e "\033[1;97mAkses Di Tolak (IP Tidak Cocok)${NC}"
+            read -n 1 -s -r -p "Press [ Enter ] to Exit"
+            exit 1
+        fi
+    else
+        echo -e "\033[1;91mPermission Denied (IP Not Found)\033[0m"
+        echo -e "\033[1;97mAkses Di Tolak (IP Tidak Ditemukan)${NC}"
+        read -n 1 -s -r -p "Press [ Enter ] to Exit"
+        exit 1
+    fi
+}
+
+PERMISSION
+clear
+export HOME=/root
+export TERM=xterm
+
+username="$1"
+bulan="$2"
+ip="$3"
+
+if [[ -z "$username" || -z "$bulan" || -z "$ip" ]]; then
+  echo "❌ Parameter tidak lengkap. Gunakan: <username> <bulan> <ip>"
+  exit 1
+fi
+
+exp_days=$((bulan * 30))
+exp_date=$(date -d "+$exp_days days" +"%Y-%m-%d")
+
+TOKEN="TULIS_TOKEN_GITHUB_DISINI"
+REPO="https://github.com/WBVPN/WIBUVPN-LITE.git"
+EMAIL="wibuvpnstore@gmail.com"
+USER="WBVPN"
+
+git clone --quiet ${REPO} /root/ipvps/
+if grep -qw "$ip" /root/ipvps/ip; then
+  echo "❌ IP sudah terdaftar. Silahkan gunakan IP lain."
+  rm -rf /root/ipvps
+  exit 1
+fi
+
+echo "### ${username} ${exp_date} ${ip}" >> /root/ipvps/ip
+
+cd /root/ipvps
+git config --global user.email "${EMAIL}"
+git config --global user.name "${USER}"
+rm -rf .git &> /dev/null
+git init &> /dev/null
+git add . &> /dev/null
+git commit -m "Register $ip" &> /dev/null
+git branch -M main &> /dev/null
+git remote add origin ${REPO}
+git push -f https://${TOKEN}@github.com/WBVPN/WIBUVPN-LITE.git &> /dev/null
+rm -rf /root/ipvps
+
+echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
+echo -e "<b>◇⟨SUCCESSFULLY REGISTERED⟩</b>◇"
+echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
+echo -e "🏷️ <b>Username:</b> <code>${username}</code>"
+echo -e "🏷️ <b>IP Address:</b> <code>${ip}</code>"
+echo -e "🏷️ <b>Expired:</b> <code>${exp_date}</code>"
+echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
+echo -e "❇️ <b>» Pemasangan Tahap 1:</b>"
+echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
+echo -e "<code>apt update -y && apt upgrade -y --fix-missing && apt install -y xxd bzip2 wget curl sudo build-essential bsdmainutils screen dos2unix && update-grub && apt dist-upgrade -y && sleep 2 && reboot</code>"
+echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
+echo -e "❇️ <b>» Pemasangan Tahap 2:</b>"
+echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
+echo -e "<code>screen -S setup-session bash -c \"wget -q https://raw.githubusercontent.com/WBVPN/WIBUVPN-LITE/main/setup.sh && chmod +x install.sh && ./install.sh; read -p 'Tekan enter untuk keluar...'\"</code>"
+echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
+echo -e "⚠️ <b>Jika Terjadi Disconnect Saat Proses Penginstallan, Gunakan Perintah Di Bawah Ini:</b>"
+echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
+echo -e "<code>screen -r -d setup</code>"
+echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
+echo -e "❇️ <b>» Perintah Tersebut Untuk Menghubungkan Ulang</b>"
+echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
