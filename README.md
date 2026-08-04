@@ -1,6 +1,6 @@
 # ✨ WIBUVPN LITE ✨
 
-![Version](https://img.shields.io/badge/Version-9.1_Patched-blue.svg)
+![Version](https://img.shields.io/badge/Version-9.2_Patched-blue.svg)
 ![Status](https://img.shields.io/badge/Status-Stable-brightgreen.svg)
 ![OS](https://img.shields.io/badge/OS-Ubuntu_20.04_|_22.04_|_Debian_10_|_11-orange.svg)
 ![Arch](https://img.shields.io/badge/Arch-x86__64-lightgrey.svg)
@@ -129,9 +129,16 @@ Setelah instalasi selesai dan VPS reboot, ketik `menu` untuk masuk ke panel utam
 
 ---
 
-## 📝 Changelog v9.1 (Patch)
+## 📝 Changelog v9.2 (Patch)
 
-### Bug Fixes
+### Critical Fixes
+- **Xray Crash saat Delete Akun** — Semua fungsi delete akun (vmess, vless, trojan, shadowsocks) menggunakan pattern `sed` range `/^marker/,/^},{/d` yang gagal menghapus entry terakhir di `config.json`. Saat entry terakhir dihapus, sed menghapus sampai EOF → JSON rusak → Xray mati total. Diperbaiki ke `{N;d}` (hapus tepat 2 baris per entry).
+- **Xray Crash saat Buat Akun Trial** — Sama, fungsi check login yang menghapus akun saat quota/IP limit tercapai juga pakai pattern yang sama. Sudah diperbaiki.
+- **Nginx Crash karena IPv6** — `config/xray.conf` punya `listen [::]:80`, `listen [::]:443`, dll. Kalau IPv6 disabled di VPS, Nginx gagal start (`socket() [::]:80 failed`). Semua `listen [::]:` dihapus dari `xray.conf`.
+- **Nginx Crash saat Install** — Installer tidak menghapus `/etc/nginx/sites-enabled/default` (config bawaan Nginx yang juga punya IPv6 listen). Ditambahkan `rm -f` setelah `apt install nginx`.
+- **SlowDNS Error di Installer** — Blok `server-sldns.service` di `install.sh` terduplikasi — copy kedua bocor keluar heredoc dan dieksekusi sebagai command, menyebabkan error `[Unit]: command not found`, `[Service]: command not found`, dll. Duplikat dihapus.
+
+### Bug Fixes (dari v9.1)
 - **SSH Delete tidak bersih** — `Delete SSH` sekarang menghapus semua data terkait: entry `.ssh.db`, file quota (`/etc/ssh/$user`), file IP limit (`/etc/limit/ssh/ip/$user`), file detail (`/detail/ssh/$user.txt`), dan file HTML (`/var/www/html/ssh-$user.txt`).
 - **Delete Expired SSH tidak bersih** — Cleanup yang sama diterapkan untuk `Delete Expired`.
 - **Trial SSH auto-delete tidak bersih** — `at` job untuk trial sekarang juga membersihkan semua data pendukung.

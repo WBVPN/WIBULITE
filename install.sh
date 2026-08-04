@@ -213,6 +213,8 @@ function memasang_nginx() {
     clear
     print_install "Memasang Nginx & konfigurasinya"
     DEBIAN_FRONTEND=noninteractive apt install nginx -y
+    rm -f /etc/nginx/sites-enabled/default 2>/dev/null
+    rm -f /etc/nginx/sites-available/default 2>/dev/null
     cat <<EOL | sudo tee /etc/nginx/mime.types > /dev/null
 types {
     text/html                             html htm shtml;
@@ -1045,21 +1047,6 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 EOF
-[Unit]
-Description=Server SlowDNS By WIBUVPN
-Documentation=https://one.one.one.one
-After=network.target nss-lookup.target
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/etc/slowdns/sldns-server -udp :5300 -privkey-file /etc/slowdns/server.key $nameserver 127.0.0.1:2269
-Restart=on-failure
-[Install]
-WantedBy=multi-user.target
-END
 cd
 chmod +x /etc/systemd/system/client-sldns.service
 chmod +x /etc/systemd/system/server-sldns.service

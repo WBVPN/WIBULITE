@@ -3287,8 +3287,8 @@ END
             m_shadowsocks
         else
             local exp=$(grep -wE "^#@& $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-            sed -i "/^#@& $user $exp/,/^},{/d" /etc/xray/config.json
-            sed -i "/^#@& $user $exp/,/^},{/d" /etc/shadowsocks/.shadowsocks.db
+            sed -i "/^#@& $user $exp/{N;d}" /etc/xray/config.json
+            sed -i "/^#@& $user $exp/{N;d}" /etc/shadowsocks/.shadowsocks.db
             rm -rf "/etc/shadowsocks/$user" &>/dev/null
             rm -rf "/etc/limit/shadowsocks/ip/$user" &>/dev/null
             systemctl restart xray &>/dev/null
@@ -3489,7 +3489,7 @@ END
 
             if [[ "$action" == "lock" ]]; then
                 cp "$XRAY_CONFIG" "$BACKUP_DIR/config.json.bak"
-                sed -i "/^${marker}/,/^},{/d" "$XRAY_CONFIG"
+                sed -i "/^${marker}/{N;d}" "$XRAY_CONFIG"
                 echo -e "${Lime}User '${user}' on protocol '${protocol}' has been locked.${NC}"
             elif [[ "$action" == "unlock" ]]; then
                 if [[ -f "$BACKUP_DIR/config.json.bak" ]]; then
@@ -3574,7 +3574,7 @@ END
 
             if [[ "$action" == "lock" ]]; then
                 cp "$XRAY_CONFIG" "$BACKUP_DIR/config.json.bak"
-                sed -i "/^${marker}/,/^},{/d" "$XRAY_CONFIG"
+                sed -i "/^${marker}/{N;d}" "$XRAY_CONFIG"
                 echo -e "${Lime}User '${user}' on protocol '${protocol}' has been locked.${NC}"
             elif [[ "$action" == "unlock" ]]; then
                 if [[ -f "$BACKUP_DIR/config.json.bak" ]]; then
@@ -5801,8 +5801,8 @@ END
             m_trojan
         else
             local exp=$(grep -wE "^#! $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-            sed -i "/^#! $user $exp/,/^},{/d" /etc/xray/config.json
-            sed -i "/^#! $user $exp/,/^},{/d" /etc/trojan/.trojan.db
+            sed -i "/^#! $user $exp/{N;d}" /etc/xray/config.json
+            sed -i "/^#! $user $exp/{N;d}" /etc/trojan/.trojan.db
             rm -rf "/etc/trojan/$user" &>/dev/null
             rm -rf "/etc/limit/trojan/ip/$user" &>/dev/null
             systemctl restart xray &>/dev/null
@@ -6003,7 +6003,7 @@ END
 
             if [[ "$action" == "lock" ]]; then
                 cp "$XRAY_CONFIG" "$BACKUP_DIR/config.json.bak"
-                sed -i "/^${marker}/,/^},{/d" "$XRAY_CONFIG"
+                sed -i "/^${marker}/{N;d}" "$XRAY_CONFIG"
                 echo -e "${Lime}User '${user}' on protocol '${protocol}' has been locked.${NC}"
             elif [[ "$action" == "unlock" ]]; then
                 if [[ -f "$BACKUP_DIR/config.json.bak" ]]; then
@@ -6088,7 +6088,7 @@ END
 
             if [[ "$action" == "lock" ]]; then
                 cp "$XRAY_CONFIG" "$BACKUP_DIR/config.json.bak"
-                sed -i "/^${marker}/,/^},{/d" "$XRAY_CONFIG"
+                sed -i "/^${marker}/{N;d}" "$XRAY_CONFIG"
                 echo -e "${Lime}User '${user}' on protocol '${protocol}' has been locked.${NC}"
             elif [[ "$action" == "unlock" ]]; then
                 if [[ -f "$BACKUP_DIR/config.json.bak" ]]; then
@@ -6958,8 +6958,8 @@ END
             m_vless
         else
             local exp=$(grep -wE "^#& $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-            sed -i "/^#& $user $exp/,/^},{/d" /etc/xray/config.json
-            sed -i "/^#& $user $exp/,/^},{/d" /etc/vless/.vless.db
+            sed -i "/^#& $user $exp/{N;d}" /etc/xray/config.json
+            sed -i "/^#& $user $exp/{N;d}" /etc/vless/.vless.db
             rm -rf "/etc/vless/$user" &>/dev/null
             rm -rf "/etc/limit/vless/ip/$user" &>/dev/null
             systemctl restart xray &>/dev/null
@@ -7160,7 +7160,7 @@ END
 
             if [[ "$action" == "lock" ]]; then
                 cp "$XRAY_CONFIG" "$BACKUP_DIR/config.json.bak"
-                sed -i "/^${marker}/,/^},{/d" "$XRAY_CONFIG"
+                sed -i "/^${marker}/{N;d}" "$XRAY_CONFIG"
                 echo -e "${Lime}User '${user}' on protocol '${protocol}' has been locked.${NC}"
             elif [[ "$action" == "unlock" ]]; then
                 if [[ -f "$BACKUP_DIR/config.json.bak" ]]; then
@@ -7245,7 +7245,7 @@ END
 
             if [[ "$action" == "lock" ]]; then
                 cp "$XRAY_CONFIG" "$BACKUP_DIR/config.json.bak"
-                sed -i "/^${marker}/,/^},{/d" "$XRAY_CONFIG"
+                sed -i "/^${marker}/{N;d}" "$XRAY_CONFIG"
                 echo -e "${Lime}User '${user}' on protocol '${protocol}' has been locked.${NC}"
             elif [[ "$action" == "unlock" ]]; then
                 if [[ -f "$BACKUP_DIR/config.json.bak" ]]; then
@@ -8200,8 +8200,8 @@ END
             m_vmess
         else
             local exp=$(grep -wE "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-            sed -i "/^### $user $exp/,/^},{/d" /etc/xray/config.json
-            sed -i "/^### $user $exp/,/^},{/d" /etc/vmess/.vmess.db
+            sed -i "/^### $user $exp/{N;d}" /etc/xray/config.json
+            sed -i "/^### $user $exp/{N;d}" /etc/vmess/.vmess.db
             rm -rf "/etc/vmess/$user" &>/dev/null
             rm -rf "/etc/limit/vmess/ip/$user" &>/dev/null
             systemctl restart xray &>/dev/null
@@ -8402,7 +8402,7 @@ END
 
             if [[ "$action" == "lock" ]]; then
                 cp "$XRAY_CONFIG" "$BACKUP_DIR/config.json.bak"
-                sed -i "/^${marker}/,/^},{/d" "$XRAY_CONFIG"
+                sed -i "/^${marker}/{N;d}" "$XRAY_CONFIG"
                 echo -e "${Lime}User '${user}' on protocol '${protocol}' has been locked.${NC}"
             elif [[ "$action" == "unlock" ]]; then
                 if [[ -f "$BACKUP_DIR/config.json.bak" ]]; then
@@ -8487,7 +8487,7 @@ END
 
             if [[ "$action" == "lock" ]]; then
                 cp "$XRAY_CONFIG" "$BACKUP_DIR/config.json.bak"
-                sed -i "/^${marker}/,/^},{/d" "$XRAY_CONFIG"
+                sed -i "/^${marker}/{N;d}" "$XRAY_CONFIG"
                 echo -e "${Lime}User '${user}' on protocol '${protocol}' has been locked.${NC}"
             elif [[ "$action" == "unlock" ]]; then
                 if [[ -f "$BACKUP_DIR/config.json.bak" ]]; then
