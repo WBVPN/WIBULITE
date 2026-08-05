@@ -4346,6 +4346,8 @@ END
             echo -e SALDO='"'$mybalance'"' >> /usr/bin/cybervpn/var.txt
             echo "$bottoken" > /root/.notifbot
             echo "$admin" >> /root/.notifbot
+            mkdir -p /etc/bot
+            echo "#bot# $bottoken $admin" > /etc/bot/.bot.db
             clear
 
             cat > /etc/systemd/system/cybervpn.service << END
