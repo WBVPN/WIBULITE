@@ -50,7 +50,7 @@ function modify_xray_config() {
         # Backup configuration file
         cp $XRAY_CONFIG "$BACKUP_DIR/config.json.bak"
         # Remove user entry from configuration
-        sed -i "/^${marker}/,/^},{/d" $XRAY_CONFIG
+        sed -i "/^${marker}/{N;d}" $XRAY_CONFIG
         # Remove user from the vless database
         sed -i "/^#& $user /d" /etc/vless/.vless.db
         echo -e "User '${user}' on protocol '${protocol}' has been locked."
