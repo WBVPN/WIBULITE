@@ -179,7 +179,7 @@ mkdir -p /etc/xray
 curl -s ifconfig.me > /etc/xray/ipvps
 touch /etc/xray/domain
 mkdir -p /var/log/xray
-chown www-data:www-data /var/log/xray
+chown root:root /var/log/xray
 chmod +x /var/log/xray
 touch /var/log/xray/access.log
 touch /var/log/xray/error.log
@@ -462,8 +462,8 @@ function memasang_xray() {
     print_install "Memasang Core Xray Versi 25.5.16"
     domainSock_dir="/run/xray"
     ! [ -d $domainSock_dir ] && mkdir -p $domainSock_dir
-    chown www-data.www-data $domainSock_dir
-    bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 25.5.16
+    chown root:root $domainSock_dir
+    bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root --version 25.5.16
     wget -T 5 -O /etc/xray/config.json "${REPO}config/config.json" >/dev/null 2>&1
     wget -T 5 -O /etc/systemd/system/runn.service "${REPO}files/runn.service" >/dev/null 2>&1
     domain=$(cat /etc/xray/domain)
