@@ -48,7 +48,7 @@ function send-unban-notif() {
 }
 
 reload_services() {
-    systemctl restart xray >/dev/null 2>&1
+    touch /tmp/.xray-need-restart
 }
 
 function modify_xray_config() {

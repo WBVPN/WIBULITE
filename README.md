@@ -1,6 +1,6 @@
 # ✨ WIBUVPN LITE ✨
 
-![Version](https://img.shields.io/badge/Version-9.2_Patched-blue.svg)
+![Version](https://img.shields.io/badge/Version-9.4_Patched-blue.svg)
 ![Status](https://img.shields.io/badge/Status-Stable-brightgreen.svg)
 ![OS](https://img.shields.io/badge/OS-Ubuntu_20.04_|_22.04_|_Debian_10_|_11-orange.svg)
 ![Arch](https://img.shields.io/badge/Arch-x86__64-lightgrey.svg)
@@ -148,6 +148,16 @@ Setelah instalasi selesai dan VPS reboot, ketik `menu` untuk masuk ke panel utam
 
 ### Improvements
 - **IPv4 Forced** — Semua pemanggilan `icanhazip.com` diganti ke `ipv4.icanhazip.com` di seluruh file (menu, install.sh, backup, cloudflare, autobotbkp). Mencegah kegagalan deteksi IP pada VPS yang IPv6-nya sudah disabled.
+
+### Stability (v9.4)
+- **Xray Anti-Crash** — Service config di-upgrade: `User=root`, `LimitNOFILE=1048576`, `LimitNPROC=65535`, `RestartSec=5`, `LimitMEMLOCK=infinity`. Xray auto-recover dalam 5 detik jika crash.
+- **Batched Xray Restart** — 8 limiter service (IP + Quota) tidak lagi restart Xray langsung. Sekarang pakai flag file `/tmp/.xray-need-restart`, cron job restart Xray maksimal 1x per menit. Mencegah koneksi user terputus berulang kali.
+- **Log Rotation** — `access.log` Xray otomatis di-truncate setiap 5 menit. Mencegah file log membengkak ratusan MB yang menyebabkan Xray lambat.
+- **Kernel Tuning** — `sysctl.conf` dioptimasi: `fs.file-max=1048576`, `net.core.somaxconn=65535`, TCP buffer/keepalive/fastopen, connection tracking limit dinaikkan.
+- **Bot Trial Auto-Expire** — Semua 5 trial bot (vless/vmess/trojan/shd/ssh) sekarang cleanup lengkap saat expire: hapus config, hapus DB, hapus file, restart Xray.
+- **Bot Delete Fixes** — 5 bot-del script dirombak total: marker benar, DB benar, path benar, sed `{N;d}`.
+- **Bot Lock/Unlock Fixes** — 9 bot-lock/unlock script diperbaiki sed pattern.
+- **config.json Marker** — 8 marker dipindahkan ke posisi benar (setelah `}`) agar Xray tidak crash saat tambah akun.
 
 ---
 
