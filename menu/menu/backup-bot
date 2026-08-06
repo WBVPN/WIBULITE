@@ -20,7 +20,7 @@ echo -e "\e[32mloading...\e[0m"
 clear
 IP=$(wget -qO- ipv4.icanhazip.com)
 dateToday=$(date +"%Y-%m-%d")
-Name=$(curl https://raw.githubusercontent.com/WBVPN/WIBUVPN-LITE/main/ip?v=$RANDOM | grep $MYIP | awk '{print $2}')
+Name=$(curl https://raw.githubusercontent.com/WBVPN/WIBULITE/main/ip?v=$RANDOM | grep $MYIP | awk '{print $2}')
 
 if ! command -v jq &> /dev/null
 then

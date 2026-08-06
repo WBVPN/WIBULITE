@@ -5,7 +5,7 @@ PERMISSION() {
 
     TODAY_DATE=$(date +'%Y-%m-%d')
 
-    AUTHORIZED_ENTRY=$(curl -sS https://raw.githubusercontent.com/WBVPN/WIBUVPN-LITE/main/ip?v=$RANDOM | grep -w "$MYIP" | head -1)
+    AUTHORIZED_ENTRY=$(curl -sS https://raw.githubusercontent.com/WBVPN/WIBULITE/main/ip?v=$RANDOM | grep -w "$MYIP" | head -1)
 
     if [[ -n "$AUTHORIZED_ENTRY" ]]; then
         # IP_FROM_ENTRY sekarang adalah field ke-4

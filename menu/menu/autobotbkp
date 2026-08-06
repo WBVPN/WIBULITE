@@ -19,7 +19,7 @@ clear
 IP=$(/usr/bin/wget -qO- ipv4.icanhazip.com)
 /usr/bin/date +'%Y-%m-%d' >/dev/null
 dateToday=$(date +"%Y-%m-%d")
-Name=$(/usr/bin/curl https://raw.githubusercontent.com/WBVPN/WIBUVPN-LITE/main/ip?v=$RANDOM | grep $MYIP | awk '{print $2}')
+Name=$(/usr/bin/curl https://raw.githubusercontent.com/WBVPN/WIBULITE/main/ip?v=$RANDOM | grep $MYIP | awk '{print $2}')
 
 if ! command -v jq &> /dev/null
 then

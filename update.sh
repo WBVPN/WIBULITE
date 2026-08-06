@@ -64,7 +64,7 @@ fun_bar() {
     tput cnorm
 }
 memperbarui_script() {
-    wget -qO menu.zip "https://raw.githubusercontent.com/WBVPN/WIBUVPN-LITE/main/menu/menu.zip"
+    wget -qO menu.zip "https://raw.githubusercontent.com/WBVPN/WIBULITE/main/menu/menu.zip"
     unzip -q -o -P killer-project menu.zip
     chmod +x menu/* 
     mv menu/* /usr/local/sbin/

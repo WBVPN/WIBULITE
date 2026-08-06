@@ -4,7 +4,7 @@ PERMISSION() {
 
     TODAY_DATE=$(date +'%Y-%m-%d')
 
-    AUTHORIZED_ENTRY=$(curl -sS https://raw.githubusercontent.com/WBVPN/WIBUVPN-LITE/main/ip?v=$RANDOM | grep -w "$MYIP" | head -1)
+    AUTHORIZED_ENTRY=$(curl -sS https://raw.githubusercontent.com/WBVPN/WIBULITE/main/ip?v=$RANDOM | grep -w "$MYIP" | head -1)
 
     if [[ -n "$AUTHORIZED_ENTRY" ]]; then
         # IP_FROM_ENTRY sekarang adalah field ke-4
@@ -62,7 +62,7 @@ exp_days=$((bulan * 30))
 exp_date=$(date -d "+$exp_days days" +"%Y-%m-%d")
 
 TOKEN="TULIS_TOKEN_GITHUB_DISINI"
-REPO="https://github.com/WBVPN/WIBUVPN-LITE.git"
+REPO="https://github.com/WBVPN/WIBULITE.git"
 EMAIL="wibuvpnstore@gmail.com"
 USER="WBVPN"
 
@@ -84,7 +84,7 @@ git add . &> /dev/null
 git commit -m "Register $ip" &> /dev/null
 git branch -M main &> /dev/null
 git remote add origin ${REPO}
-git push -f https://${TOKEN}@github.com/WBVPN/WIBUVPN-LITE.git &> /dev/null
+git push -f https://${TOKEN}@github.com/WBVPN/WIBULITE.git &> /dev/null
 rm -rf /root/ipvps
 
 echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
@@ -100,7 +100,7 @@ echo -e "<code>apt update -y && apt upgrade -y --fix-missing && apt install -y x
 echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
 echo -e "❇️ <b>» Pemasangan Tahap 2:</b>"
 echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
-echo -e "<code>screen -S setup-session bash -c \"wget -q https://raw.githubusercontent.com/WBVPN/WIBUVPN-LITE/main/setup.sh && chmod +x install.sh && ./install.sh; read -p 'Tekan enter untuk keluar...'\"</code>"
+echo -e "<code>screen -S setup-session bash -c \"wget -q https://raw.githubusercontent.com/WBVPN/WIBULITE/main/setup.sh && chmod +x install.sh && ./install.sh; read -p 'Tekan enter untuk keluar...'\"</code>"
 echo -e "◇━━━━━━━━━━━━━━━━━━━◇"
 echo -e "⚠️ <b>Jika Terjadi Disconnect Saat Proses Penginstallan, Gunakan Perintah Di Bawah Ini:</b>"
 echo -e "◇━━━━━━━━━━━━━━━━━━━◇"

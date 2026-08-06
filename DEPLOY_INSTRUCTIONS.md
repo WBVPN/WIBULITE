@@ -6,7 +6,7 @@ Semua file, termasuk `install.sh`, masih dalam bentuk source code asli (plaintex
 ## 👨‍💻 1. INSTALL MANUAL (Oleh User)
 Jika Bos ingin menginstal script mentahan ini ke VPS:
 1. Login ke VPS menggunakan akses `root`.
-2. Masuk ke direktori `WIBUVPN-LITE` hasil ekstrak.
+2. Masuk ke direktori `WIBULITE` hasil ekstrak.
 3. Jalankan perintah instalasi:
    `chmod +x install.sh && ./install.sh`
 

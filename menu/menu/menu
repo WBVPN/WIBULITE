@@ -65,7 +65,7 @@ PERMISSION() {
 
     TODAY_DATE=$(date +'%Y-%m-%d')
 
-    AUTHORIZED_ENTRY=$(curl -sS https://raw.githubusercontent.com/WBVPN/WIBUVPN-LITE/main/ip?v=$RANDOM | grep -w "$MYIP" | head -1)
+    AUTHORIZED_ENTRY=$(curl -sS https://raw.githubusercontent.com/WBVPN/WIBULITE/main/ip?v=$RANDOM | grep -w "$MYIP" | head -1)
 
     if [[ -n "$AUTHORIZED_ENTRY" ]]; then
         # IP_FROM_ENTRY sekarang adalah field ke-4
@@ -110,7 +110,7 @@ IZINADMIN() {
 
     TODAY_DATE=$(date +'%Y-%m-%d')
 
-    AUTHORIZED_ENTRY=$(curl -sS https://raw.githubusercontent.com/WBVPN/WIBUVPN-LITE/main/ip-bot?v=$RANDOM | grep -w "$MYIP" | head -1)
+    AUTHORIZED_ENTRY=$(curl -sS https://raw.githubusercontent.com/WBVPN/WIBULITE/main/ip-bot?v=$RANDOM | grep -w "$MYIP" | head -1)
 
     if [[ -n "$AUTHORIZED_ENTRY" ]]; then
         # IP_FROM_ENTRY sekarang adalah field ke-4
@@ -190,22 +190,22 @@ function loading() {
             printf "    \b\b\b\b"
 }
 file_tambahan() {
-        wget -q --timeout=3 -O /usr/bin/addnoobz "${link_downloadfile}WIBUVPN-LITE/main/ping/addnoobz.sh" && chmod +x /usr/bin/addnoobz 2>/dev/null
-        wget -q --timeout=3 -O /usr/bin/cek-ssh "${link_downloadfile}WIBUVPN-LITE/main/ping/cek-ssh.sh" && chmod +x /usr/bin/cek-ssh 2>/dev/null
-        wget -q --timeout=3 -O /usr/bin/cek-ss "${link_downloadfile}WIBUVPN-LITE/main/ping/cek-ss.sh" && chmod +x /usr/bin/cek-ss 2>/dev/null
-        wget -q --timeout=3 -O /usr/bin/cek-tr "${link_downloadfile}WIBUVPN-LITE/main/ping/cek-tr.sh" && chmod +x /usr/bin/cek-tr 2>/dev/null
-        wget -q --timeout=3 -O /usr/bin/cek-vless "${link_downloadfile}WIBUVPN-LITE/main/ping/cek-vless.sh" && chmod +x /usr/bin/cek-vless 2>/dev/null
-        wget -q --timeout=3 -O /usr/bin/cek-ws "${link_downloadfile}WIBUVPN-LITE/main/ping/cek-ws.sh" && chmod +x /usr/bin/cek-ws 2>/dev/null
-        wget -q --timeout=3 -O /usr/bin/del-vless "${link_downloadfile}WIBUVPN-LITE/main/ping/del-vless.sh" && chmod +x /usr/bin/del-vless 2>/dev/null
-        wget -q --timeout=3 -O /usr/bin/cek-noobz "${link_downloadfile}WIBUVPN-LITE/main/ping/cek-noobz.sh" && chmod +x /usr/bin/cek-noobz 2>/dev/null
-        wget -q --timeout=3 -O /usr/bin/cek-mws "${link_downloadfile}WIBUVPN-LITE/main/ping/cek-mws.sh" && chmod +x /usr/bin/cek-mws 2>/dev/null
-        wget -q --timeout=3 -O /usr/bin/cek-mvs "${link_downloadfile}WIBUVPN-LITE/main/ping/cek-mvs.sh" && chmod +x /usr/bin/cek-mvs 2>/dev/null
-        wget -q --timeout=3 -O /usr/bin/cek-mss "${link_downloadfile}WIBUVPN-LITE/main/ping/cek-mss.sh" && chmod +x /usr/bin/cek-mss 2>/dev/null
-        wget -q --timeout=3 -O /usr/bin/cek-mts "${link_downloadfile}WIBUVPN-LITE/main/ping/cek-mts.sh" && chmod +x /usr/bin/cek-mts 2>/dev/null
+        wget -q --timeout=3 -O /usr/bin/addnoobz "${link_downloadfile}WIBULITE/main/ping/addnoobz.sh" && chmod +x /usr/bin/addnoobz 2>/dev/null
+        wget -q --timeout=3 -O /usr/bin/cek-ssh "${link_downloadfile}WIBULITE/main/ping/cek-ssh.sh" && chmod +x /usr/bin/cek-ssh 2>/dev/null
+        wget -q --timeout=3 -O /usr/bin/cek-ss "${link_downloadfile}WIBULITE/main/ping/cek-ss.sh" && chmod +x /usr/bin/cek-ss 2>/dev/null
+        wget -q --timeout=3 -O /usr/bin/cek-tr "${link_downloadfile}WIBULITE/main/ping/cek-tr.sh" && chmod +x /usr/bin/cek-tr 2>/dev/null
+        wget -q --timeout=3 -O /usr/bin/cek-vless "${link_downloadfile}WIBULITE/main/ping/cek-vless.sh" && chmod +x /usr/bin/cek-vless 2>/dev/null
+        wget -q --timeout=3 -O /usr/bin/cek-ws "${link_downloadfile}WIBULITE/main/ping/cek-ws.sh" && chmod +x /usr/bin/cek-ws 2>/dev/null
+        wget -q --timeout=3 -O /usr/bin/del-vless "${link_downloadfile}WIBULITE/main/ping/del-vless.sh" && chmod +x /usr/bin/del-vless 2>/dev/null
+        wget -q --timeout=3 -O /usr/bin/cek-noobz "${link_downloadfile}WIBULITE/main/ping/cek-noobz.sh" && chmod +x /usr/bin/cek-noobz 2>/dev/null
+        wget -q --timeout=3 -O /usr/bin/cek-mws "${link_downloadfile}WIBULITE/main/ping/cek-mws.sh" && chmod +x /usr/bin/cek-mws 2>/dev/null
+        wget -q --timeout=3 -O /usr/bin/cek-mvs "${link_downloadfile}WIBULITE/main/ping/cek-mvs.sh" && chmod +x /usr/bin/cek-mvs 2>/dev/null
+        wget -q --timeout=3 -O /usr/bin/cek-mss "${link_downloadfile}WIBULITE/main/ping/cek-mss.sh" && chmod +x /usr/bin/cek-mss 2>/dev/null
+        wget -q --timeout=3 -O /usr/bin/cek-mts "${link_downloadfile}WIBULITE/main/ping/cek-mts.sh" && chmod +x /usr/bin/cek-mts 2>/dev/null
 }
 memasang_info() {
   MYIP=$(curl -sS ipv4.icanhazip.com)
-  local izinsc="https://raw.githubusercontent.com/WBVPN/WIBUVPN-LITE/main/ip"
+  local izinsc="https://raw.githubusercontent.com/WBVPN/WIBULITE/main/ip"
   
   local IP_DATA_LINE=$(curl -s "$izinsc" | grep -w "$MYIP" | head -1)
 
@@ -503,9 +503,9 @@ fix_nginx() {
     ~/.acme.sh/acme.sh --installcert -d "$domain" --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
     cat /etc/xray/xray.crt /etc/xray/xray.key > /etc/haproxy/hap.pem
 
-    wget -O /etc/nginx/conf.d/xray.conf "${link_downloadfile}WIBUVPN-LITE/main/config/xray.conf" >/dev/null 2>&1
+    wget -O /etc/nginx/conf.d/xray.conf "${link_downloadfile}WIBULITE/main/config/xray.conf" >/dev/null 2>&1
 
-    curl -s "${link_downloadfile}WIBUVPN-LITE/main/config/nginx.conf" > /etc/nginx/nginx.conf
+    curl -s "${link_downloadfile}WIBULITE/main/config/nginx.conf" > /etc/nginx/nginx.conf
     sed -i "s/xxx/${domain}/g" /etc/nginx/conf.d/xray.conf
 
     systemctl restart nginx
@@ -907,7 +907,7 @@ m_nob() {
     function ins_noobz() {
         clear
         echo -e "${runn} Installing NoobzVPN...${Suffix}"
-        wget ${link_downloadfile}WIBUVPN-LITE/main/noobzvpns.zip 
+        wget ${link_downloadfile}WIBULITE/main/noobzvpns.zip 
         unzip -o noobzvpns.zip 
         rm -rf noobzvpns.zip noobzvpns.zip.1 noobzvpns.zip.2 noobzvpns.zip.3 noobzvpns.zip.4
         cd noobzvpns || { echo "Error: noobzvpns directory not found."; read -n 1 -s -r -p "Press [ Enter ] to Return"; m_nob; return 1; }
@@ -2552,9 +2552,9 @@ m_slowdns() {
 
         rm -rf /etc/slowdns &>/dev/null
         mkdir -m 777 /etc/slowdns
-        wget -q --timeout=3 -O /etc/slowdns/server.key "${link_downloadfile}WIBUVPN-LITE/main/slowdns/server.key" &>/dev/null
-        wget -q --timeout=3 -O /etc/slowdns/server.pub "${link_downloadfile}WIBUVPN-LITE/main/slowdns/server.pub" &>/dev/null
-        wget -q --timeout=3 -O /etc/slowdns/sldns-server "${link_downloadfile}WIBUVPN-LITE/main/slowdns/sldns-server" &>/dev/null
+        wget -q --timeout=3 -O /etc/slowdns/server.key "${link_downloadfile}WIBULITE/main/slowdns/server.key" &>/dev/null
+        wget -q --timeout=3 -O /etc/slowdns/server.pub "${link_downloadfile}WIBULITE/main/slowdns/server.pub" &>/dev/null
+        wget -q --timeout=3 -O /etc/slowdns/sldns-server "${link_downloadfile}WIBULITE/main/slowdns/sldns-server" &>/dev/null
         
         chmod +x /etc/slowdns/server.key
         chmod +x /etc/slowdns/server.pub
@@ -3960,7 +3960,7 @@ install_api_plugin() {
         rm /var/lib/dpkg/lock* &>/dev/null
 
         if [ ! -f /usr/bin/api-lite/api.js ]; then
-            curl -sL "${link_downloadfile}WIBUVPN-LITE/main/files/api-lite.zip" -o /usr/bin/api-lite.zip
+            curl -sL "${link_downloadfile}WIBULITE/main/files/api-lite.zip" -o /usr/bin/api-lite.zip
             cd /usr/bin || return 1
             unzip -o -P killer-project api-lite.zip &>/dev/null
             rm api-lite.zip*
@@ -4109,7 +4109,7 @@ m_bot() {
             apt install unzip -y
             apt install neofetch -y
             cd /usr/bin
-            wget ${link_downloadfile}WIBUVPN-LITE/main/bot/vermilion.zip
+            wget ${link_downloadfile}WIBULITE/main/bot/vermilion.zip
             unzip -o -P killer-project vermilion.zip &>/dev/null
             chmod +x /usr/bin/vermilion/*
             rm -rf vermilion.zip 2>/dev/null
@@ -4129,10 +4129,10 @@ m_bot() {
             sed -i "s/ghp_7dH0eatN7fkS""fc9f4VAmXdeyiV1uh42QahsS/$githubtoken/g" /usr/bin/vermilion/literegis.sh
             sed -i "s/ghp_7dH0eatN7fkS""fc9f4VAmXdeyiV1uh42QahsS/$githubtoken/g" /usr/bin/vermilion/litedelete.sh
             sed -i "s/ghp_7dH0eatN7fkS""fc9f4VAmXdeyiV1uh42QahsS/$githubtoken/g" /usr/bin/vermilion/liteextend.sh
-            sed -i "s|Nizwarax/link.git|WBVPN/WIBUVPN-LITE.git|g" /usr/bin/vermilion/literegis.sh
-            sed -i "s|Nizwarax/link.git|WBVPN/WIBUVPN-LITE.git|g" /usr/bin/vermilion/litedelete.sh
-            sed -i "s|Nizwarax/link.git|WBVPN/WIBUVPN-LITE.git|g" /usr/bin/vermilion/liteextend.sh
-            sed -i "s|vermiliion/x-only|WBVPN/WIBUVPN-LITE|g" /usr/bin/vermilion/daftarip.py
+            sed -i "s|Nizwarax/link.git|WBVPN/WIBULITE.git|g" /usr/bin/vermilion/literegis.sh
+            sed -i "s|Nizwarax/link.git|WBVPN/WIBULITE.git|g" /usr/bin/vermilion/litedelete.sh
+            sed -i "s|Nizwarax/link.git|WBVPN/WIBULITE.git|g" /usr/bin/vermilion/liteextend.sh
+            sed -i "s|vermiliion/x-only|WBVPN/WIBULITE|g" /usr/bin/vermilion/daftarip.py
             sed -i "s|https://raw.githubusercontent.com/vermiliion/anj/main/freenet.png|https://placehold.co/600x400/000000/FFFFFF/png?text=WIBUVPN+LITE|g" /usr/bin/vermilion/daftarip.py
             sed -i "s/main\/setup.sh/main\/install.sh/g" /usr/bin/vermilion/literegis.sh
             
@@ -4298,14 +4298,14 @@ END
             fi
 
             cd /usr/bin
-            wget ${link_downloadfile}WIBUVPN-LITE/main/bot/bot.zip
+            wget ${link_downloadfile}WIBULITE/main/bot/bot.zip
             unzip -o -P killer-project bot.zip &>/dev/null
             sudo dos2unix bot/* 
             chmod +x bot/*
             mv bot/* /usr/bin
             rm -rf bot.zip 2>/dev/null
             clear
-            wget ${link_downloadfile}WIBUVPN-LITE/main/bot/cybervpn.zip
+            wget ${link_downloadfile}WIBULITE/main/bot/cybervpn.zip
             unzip -o -P killer-project cybervpn.zip &>/dev/null
             cd /usr/bin/cybervpn
             rm var.txt 2>/dev/null
@@ -4487,14 +4487,14 @@ END
 
             apt update && apt install -y neofetch git unzip dos2unix
             cd /usr/bin
-            wget ${link_downloadfile}WIBUVPN-LITE/main/bot/bot.zip
+            wget ${link_downloadfile}WIBULITE/main/bot/bot.zip
             unzip -o -P killer-project bot.zip &>/dev/null
             sudo dos2unix bot/* 
             chmod +x bot/*
             mv bot/* /usr/bin
             rm -rf bot.zip 2>/dev/null
             clear
-            wget ${link_downloadfile}WIBUVPN-LITE/main/bot/private.zip
+            wget ${link_downloadfile}WIBULITE/main/bot/private.zip
             unzip -o -P killer-project private.zip &>/dev/null
             cd /usr/bin/private
             if [ -f "requirements.txt" ]; then
@@ -4664,14 +4664,14 @@ END
             fi
             apt update && apt install -y neofetch git unzip dos2unix
             cd /usr/bin
-            wget ${link_downloadfile}WIBUVPN-LITE/main/bot/bot.zip
+            wget ${link_downloadfile}WIBULITE/main/bot/bot.zip
             unzip -o -P killer-project bot.zip &>/dev/null
             sudo dos2unix bot/* 
             chmod +x bot/*
             mv bot/* /usr/bin
             rm -rf bot.zip 2>/dev/null
             clear
-            wget ${link_downloadfile}WIBUVPN-LITE/main/bot/public.zip
+            wget ${link_downloadfile}WIBULITE/main/bot/public.zip
             unzip -o -P killer-project public.zip &>/dev/null
             cd /usr/bin/public
             if [ -f "requirements.txt" ]; then
@@ -4837,14 +4837,14 @@ END
             fi
             apt update && apt install -y neofetch git unzip dos2unix
             cd /usr/bin
-            wget ${link_downloadfile}WIBUVPN-LITE/main/bot/bot.zip
+            wget ${link_downloadfile}WIBULITE/main/bot/bot.zip
             unzip -o -P killer-project bot.zip &>/dev/null
             sudo dos2unix bot/* 
             chmod +x bot/*
             mv bot/* /usr/bin
             rm -rf bot.zip 2>/dev/null
             clear
-            wget ${link_downloadfile}WIBUVPN-LITE/main/bot/give.zip
+            wget ${link_downloadfile}WIBULITE/main/bot/give.zip
             unzip -o -P killer-project give.zip &>/dev/null
             cd /usr/bin/give
             if [ -f "requirements.txt" ]; then
