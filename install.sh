@@ -25,7 +25,7 @@ NC='\033[0m'
 tampilan() {
     local my_ip allowed_ips_url today matched_line exp_date_or_lifetime
 
-    allowed_ips_url="https://raw.githubusercontent.com/WBVPN/WIBULITE/main/ip"
+    allowed_ips_url="https://raw.githubusercontent.com/WBVPN/WIBULITE/main/ip?v=${RANDOM}"
     echo -e "\n${BIWhite}[ ${LIME}INFO${BIWhite} ] Mengecek izin akses...${NC}"
     
     my_ip=$(curl -sS ipv4.icanhazip.com | tr -d '\r')
@@ -463,6 +463,7 @@ function memasang_xray() {
     domainSock_dir="/run/xray"
     ! [ -d $domainSock_dir ] && mkdir -p $domainSock_dir
     chown root:root $domainSock_dir
+    mount -o remount,size=1G /tmp 2>/dev/null || true
     bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root --version 25.5.16
     wget -T 5 -O /etc/xray/config.json "${REPO}config/config.json" >/dev/null 2>&1
     wget -T 5 -O /etc/systemd/system/runn.service "${REPO}files/runn.service" >/dev/null 2>&1
