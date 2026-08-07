@@ -267,7 +267,7 @@ function memasang_paket_dasar() {
       speedtest-cli vnstat libnss3-dev libnspr4-dev pkg-config libpam0g-dev \
       libcap-ng-dev libcap-ng-utils libselinux1-dev libcurl4-nss-dev flex bison make libnss3-tools \
       libevent-dev bc rsyslog dos2unix zlib1g-dev libssl-dev libsqlite3-dev sed dirmngr \
-      libxml-parser-perl build-essential gcc g++ python3 htop lsof tar wget curl git \
+      libxml-parser-perl build-essential gcc g++ python3 python3-pip htop lsof tar wget curl git \
       unzip p7zip-full libc6 util-linux msmtp-mta ca-certificates bsd-mailx \
       netfilter-persistent net-tools gnupg lsb-release cmake screen xz-utils apt-transport-https dnsutils jq easy-rsa
     apt clean
